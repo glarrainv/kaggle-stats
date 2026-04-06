@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 400 400" fill="none">
 <style>
   text { font-family: Verdana, sans-serif; }
   .t   { font-weight: bold; }
@@ -33,11 +33,11 @@
 
   <text x="230" y="150" fill="#20BEFF" class="t o e" font-size="18">64.2k</text>
   <text x="235" y="150" fill="#000000" font-size="14">Views</text>
-  <text x="230" y="212" fill="#1a9bce" class="t o e" font-size="20">1.9k</text>
+  <text x="230" y="212" fill="#1a9bce" class="t o e" font-size="22">1.9k</text>
   <text x="235" y="212" fill="#000000" font-size="14">Dwnld</text>
   <text x="230" y="238" fill="#156788" class="t o e" font-size="22">482</text>
   <text x="235" y="238" fill="#000000" font-size="14">Upvotes</text>
-  <text x="230" y="290" fill="#07414a" class="t o e" font-size="24">26</text>
+  <text x="230" y="290" fill="#07414a" class="t o e" font-size="26">26</text>
   <text x="235" y="290" fill="#000000" font-size="14">Topics</text>
 <text x="200" y="340" fill="#000000" class="t m" font-size="7">RAPIDS</text>
 <text x="200" y="355" fill="#000000" class="m"    font-size="12">cdeotte</text>

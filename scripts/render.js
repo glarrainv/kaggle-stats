@@ -187,7 +187,7 @@ function buildSVG(item, typeConfig) {
     STARTING: '#ffffff',
   };
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="none">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 400 400" fill="none">
 <style>
   text { font-family: Verdana, sans-serif; }
   .t   { font-weight: bold; }
