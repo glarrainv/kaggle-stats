@@ -35,6 +35,14 @@ const BAR_X = 125;
 const BAR_WIDTH = 30;
 const BAR_RX = 15;
 
+const LOG_BASE = 20;
+
+const TEXT_X = 230; // x anchor for the value number
+const NAME_SIZE = 14;
+const NAME_OFFSET = 5;  // gap between value baseline and name baseline
+const MIN_GAP = 8 
+
+
 const colorOrder = [
     '#20BEFF',
     '#1a9bce',
@@ -78,7 +86,6 @@ const truncate = (str, max) =>
 
 // Handles ranking of all fields, adjusting bar sizing, colors and respective labels accordingly
 function rankStats(item, statDefs) {
-  const LOG_BASE = 5;
   const stats = statDefs
     .map(({ field, label }) => ({ label, value: item[field] ?? 0 }))
     .sort((a, b) => b.value - a.value);
@@ -128,14 +135,8 @@ function buildBar(ranked) {
 //Label sizing and positioning.
 // [Value] + [Name]
 function buildLabels(ranked) {
-    const TEXT_X = 230; // x anchor for the value number
     let VALUE_SIZE = 18;
     let CHECK_VALUE = 4; // Length limit for label for dynamic sizing
-    const NAME_SIZE = 14;
-    const NAME_OFFSET = 5;  // gap between value baseline and name baseline
-    const MIN_GAP = 8 
-
-
     // Minimum gap enforcement
     function resolvePositions(ranked) {
         const positions = ranked.map((s) => BAR_TOP + (BAR_HEIGHT - s.height) + 30);
@@ -161,10 +162,9 @@ function buildLabels(ranked) {
             const Y = positions[i];          // baseline sits inside bar top area
             const NAME_X = TEXT_X + NAME_OFFSET;
             if (fmt(s.value).length <= CHECK_VALUE) {
-                VALUE_SIZE += 2; // Increase font size for shorter values
-                CHECK_VALUE = fmt(s.value).length - 1;
+                VALUE_SIZE += 4; // Increase font size for shorter values
+                CHECK_VALUE = Math.floor(fmt(s.value).length / 2);
             }
-            console.log(fmt(s.value).length)
             return `
   <text x="${TEXT_X}" y="${Y}" fill="${s.color}" class="t o e" font-size="${VALUE_SIZE}">${fmt(s.value)}</text>
   <text x="${NAME_X}" y="${Y}" fill="#000000" font-size="${NAME_SIZE}">${s.label}</text>`;
