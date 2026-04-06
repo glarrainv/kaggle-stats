@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" fill="none">
+<style>
+  text { font-family: Verdana, sans-serif; }
+  .t   { font-weight: bold; }
+  .m   { text-anchor: middle; }
+  .e   { font-weight: bold; text-anchor: end; }
+  .o   { paint-order: stroke; stroke: #47494D; stroke-width: 2px; }
+</style>
+<rect x="87.5" y="25" rx="50" width="225" height="350" fill="#F5F5F5" stroke="#C0C0C0" stroke-width="5"/>
+<text fill="#C0C0C0" font-size="20" x="200" y="70"  class="t m o">SILVER</text>
+<text fill="#20BEFF" font-size="40" x="200" y="105" class="t m o">Kernel</text>
+
+  <rect
+    x="125" y="120"
+    width="30" height="200"
+    rx="15"
+    fill="#20BEFF" stroke="#47494D" stroke-width="2"/>
+  <rect
+    x="125" y="191"
+    width="30" height="129"
+    rx="15"
+    fill="#1a9bce" stroke="#47494D" stroke-width="2"/>
+  <rect
+    x="125" y="223"
+    width="30" height="97"
+    rx="15"
+    fill="#156788" stroke="#47494D" stroke-width="2"/>
+
+  <text x="230" y="150" fill="#20BEFF" class="t o e" font-size="20">751</text>
+  <text x="235" y="150" fill="#000000" font-size="14">Views</text>
+  <text x="230" y="221" fill="#1a9bce" class="t o e" font-size="22">70</text>
+  <text x="235" y="221" fill="#000000" font-size="14">Upvotes</text>
+  <text x="230" y="253" fill="#156788" class="t o e" font-size="22">24</text>
+  <text x="235" y="253" fill="#000000" font-size="14">Forks</text>
+<text x="200" y="340" fill="#000000" class="t m" font-size="7">1st Place - Nvidia cuML Logistic Regression</text>
+<text x="200" y="355" fill="#000000" class="m"    font-size="12">cdeotte</text>
+</svg>
