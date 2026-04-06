@@ -1,0 +1,57 @@
+[
+  {
+    "timestamp": "2026-04-06T04:50:19.775Z",
+    "data": [
+      {
+        "profile": {
+          "Achievements": [
+            {
+              "tier": "CONTRIBUTOR",
+              "summaryType": "USER_ACHIEVEMENT_TYPE_COMPETITIONS",
+              "rankOutOf": 203245
+            },
+            {
+              "tier": "CONTRIBUTOR",
+              "summaryType": "USER_ACHIEVEMENT_TYPE_DATASETS",
+              "rankOutOf": 9000,
+              "totalBronzeMedals": 1
+            },
+            {
+              "tier": "CONTRIBUTOR",
+              "summaryType": "USER_ACHIEVEMENT_TYPE_NOTEBOOKS",
+              "rankOutOf": 60807
+            }
+          ],
+          "ActivityCounts": {
+            "Kernels": 3,
+            "Datasets": 1,
+            "Discussions": 1
+          },
+          "BadgesLength": 12
+        }
+      },
+      {
+        "notebooks": "basic-python-introduction-proposal-example",
+        "title": "[Basic] Python Introduction - Proposal Example",
+        "upvotes": 4,
+        "views": 123,
+        "forks": 8
+      },
+      {
+        "notebooks": "advanced-ml-and-visualizations",
+        "title": "[Advanced] ML and Visualizations",
+        "upvotes": 0,
+        "views": 39,
+        "forks": 1
+      },
+      {
+        "datasets": "notre-dame-data-club-2026-historical-data",
+        "title": "Notre Dame Data Club 2026 -  Historical Data",
+        "views": 531,
+        "downloads": 134,
+        "discussions": 1,
+        "upvoteCount": 9
+      }
+    ]
+  }
+]

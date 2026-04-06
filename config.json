@@ -1,0 +1,7 @@
+{
+  "targetids": {
+    "user": "gasparlarrainvaras", 
+    "datasets": ["notre-dame-data-club-2026-historical-data"], 
+    "notebooks": ["basic-python-introduction-proposal-example", "advanced-ml-and-visualizations"]
+  }
+}

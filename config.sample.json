@@ -1,0 +1,7 @@
+{
+  "target": {
+    "profile": "username", 
+    "datasets": ["<dataset_id>"], 
+    "notebooks": ["<notebook_id>"]
+  }
+}

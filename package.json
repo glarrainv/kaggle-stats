@@ -1,0 +1,12 @@
+{  
+  "name": "kaggle-stats",
+  "type": "module",
+  "scripts": {
+    "fetch": "node scripts/fetch.js",
+    "render": "node scripts/render.js",
+    "update": "node scripts/fetch.js && node scripts/render.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
