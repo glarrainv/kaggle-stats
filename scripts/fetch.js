@@ -19,9 +19,15 @@ async function main() {
 
 
   const historyPath = './scripts/history/history.json';
-  const history = JSON.parse(fs.readFileSync(historyPath, 'utf8'));
-  history.push(snapshot);
-  fs.writeFileSync(historyPath, JSON.stringify(history, null, 2));
+  try {
+    const history = JSON.parse(fs.readFileSync(historyPath, 'utf8'));
+    history.push(snapshot);
+    fs.writeFileSync(historyPath, JSON.stringify(history, null, 2))
+  } catch (err) {    
+    console.log('Error reading history.json, starting new history. Error:', err);
+    const history = [snapshot];
+    fs.writeFileSync(historyPath, JSON.stringify(history, null, 2))
+  };
 
   console.log(`Snapshot saved to history.json at ${snapshot.timestamp}`);
 
@@ -87,6 +93,7 @@ const RelevantData = [];
 async function fetchItems(type, name, cookieStr, xsrfToken) {
     // Define path for api call
     let Endpoint, payload;
+    const medalList = ["gold", "silver", "bronze"];
 
     // Endpoint and payloads differ within Kaggle's internal api
     // Kaggle provides no documentation for these endpoints, however they execute on page load within their website.
@@ -112,7 +119,11 @@ async function fetchItems(type, name, cookieStr, xsrfToken) {
     );
 
     const data = apiResponse.data;
-    const relevantData = type === "notebooks" ? {title: data?.kernel?.title, upvotes: data?.kernel?.upvoteCount || 0,views: data?.kernel?.viewCount || 0, forks: data?.kernel?.forkCount || 0} : {title: data?.title, views: data?.viewCount || 0, downloads: data?.downloadCount || 0, discussions: data?.topicCount || 0, upvoteCount: data?.voteCount || 0};
+    // For checking all possible fields
+    console.log(`Raw API response for ${type} %s: %o`, name, data);
+
+    // Data structuring - extracting only relevant fields for rendering
+    const relevantData = type === "notebooks" ? {title: data?.kernel?.title, upvotes: data?.kernel?.upvoteCount || 0,views: data?.kernel?.viewCount || 0, forks: data?.kernel?.forkCount || 0, medal: data?.kernel?.medal || "STARTING"} : {title: data?.title, views: data?.viewCount || 0, downloads: data?.downloadCount || 0, discussions: data?.topicCount || 0, upvotes: data?.voteCount || 0, medal: medalList.find(medal => data?.medalUrl?.includes(medal))?.toUpperCase() || "STARTING"};
 
     console.log(`Fetched ${name} ${type}  for user %s`, targetids.user, relevantData);
     return relevantData;
