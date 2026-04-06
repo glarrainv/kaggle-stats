@@ -3,8 +3,8 @@
 *Display stats from your kaggle profile, datasets and notebooks within github. Automatically updated through GitHub Actions.*
 
 ### Notebooks
-![25 Million Images MNIST](./assets/notebooks/25-million-images-0-99757-mnist.svg)
-![1st Place Nvidia](./assets/notebooks/1st-place-nvidia-cuml-logistic-regression.svg)
+![Advanced](./assets/notebooks/advanced-ml-and-visualizations.svg)
+![Basic](./assets/notebooks/basic-python-introduction-proposal-example.svg)
 
 ### Datasets
-![RAPIDS](./assets/datasets/rapids.svg)
+![Data Club](./assets/datasets/notre-dame-data-club-2026-historical-data.svg)

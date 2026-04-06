@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 200" fill="none">
+<style>
+  text { font-family: Verdana, sans-serif; }
+  .t   { font-weight: bold; }
+  .m   { text-anchor: middle; }
+  .e   { font-weight: bold; text-anchor: end; }
+  .o   { paint-order: stroke; stroke: #47494D; stroke-width: 2px; }
+</style>
+<rect x="25" y="25" rx="50" width="350" height="175" fill="#F5F5F5" stroke="#ffffff" stroke-width="5"/>
+<text fill="#ffffff" font-size="15" x="200" y="45"  class="t m o">STARTING</text>
+<text fill="#20BEFF" font-size="30" x="200" y="70" class="t m o">Kernel</text>
+
+  <rect
+    x="50" y="120"
+    width="300" height="30"
+    rx="20"
+    fill="#20BEFF" stroke="#47494D" stroke-width="2"/>
+  <rect
+    x="50" y="120"
+    width="60" height="30"
+    rx="20"
+    fill="#1a9bce" stroke="#47494D" stroke-width="2"/>
+  <rect
+    x="50" y="120"
+    width="30" height="30"
+    rx="20"
+    fill="#156788" stroke="#47494D" stroke-width="2"/>
+
+  <text x="300" y="96" fill="#20BEFF" class="t m o" font-size="16">43</text>
+  <text x="300" y="112" fill="#000000" class="m" font-size="14">Views</text>
+  <text x="200" y="96" fill="#1a9bce" class="t m o" font-size="16">1</text>
+  <text x="200" y="112" fill="#000000" class="m" font-size="14">Forks</text>
+  <text x="100" y="96" fill="#156788" class="t m o" font-size="16">0</text>
+  <text x="100" y="112" fill="#000000" class="m" font-size="14">Upvotes</text>
+<text x="200" y="170" fill="#000000" class="t m" font-size="11">[Advanced] ML and Visualizations</text>
+<text x="200" y="190" fill="#000000" class="m"    font-size="16">gasparlarrainvaras</text>
+</svg>

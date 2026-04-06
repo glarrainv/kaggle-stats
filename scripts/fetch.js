@@ -23,7 +23,8 @@ async function main() {
     const history = JSON.parse(fs.readFileSync(historyPath, 'utf8'));
     history.push(snapshot);
     fs.writeFileSync(historyPath, JSON.stringify(history, null, 2))
-  } catch (err) {    
+  } 
+  catch (err) {    
     console.log('Error reading history.json, starting new history. Error:', err);
     const history = [snapshot];
     fs.writeFileSync(historyPath, JSON.stringify(history, null, 2))
