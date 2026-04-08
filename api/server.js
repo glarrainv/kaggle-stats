@@ -4,6 +4,7 @@ import { fetchKaggleProfile } from '../scripts/fetch.js';
 import axios from 'axios';
 import nodeCron from 'node-cron';
 import dotenv from 'dotenv';
+import serverless from 'serverless-http';
 dotenv.config();
 
 // ── app ──────────────────────────────────────────────────────────────────────
@@ -55,13 +56,18 @@ app.get('/card/:type/:username/:slug', async (req, res) => {
     .setHeader('Cache-Control', 'public, max-age=3600')
     .send(svg);
 } catch (error) {
-  console.error('Error generating card check slug matches an item owned by the user:', error);
+  console.error('Error generating card. check slug matches an item owned by the user:', error);
   res.status(500).json({ error: 'Internal server error' });
 };
 });
 
 // ── start ────────────────────────────────────────────────────────────────────
-app.listen(PORT, async () => {
-  const response = await axios.post(LIVE_URL, LIVE_CHECKS);
-  console.log('Initial request sent:', response.status);
+if (process.env.NODE_ENV === 'local') {
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`);
 });
+} else {
+const response = await axios.post(LIVE_URL, LIVE_CHECKS);
+console.log('Initial request sent:', response.status);
+serverless(app);
+}

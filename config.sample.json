@@ -2,6 +2,6 @@
   "target": {
     "profile": "username", 
     "datasets": ["<dataset_id>"], 
-    "kernels": ["<notebook_id>"]
+    "kernels": ["<kernel_id>"]
   }
 }
