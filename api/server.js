@@ -4,7 +4,6 @@ import { fetchKaggleProfile } from '../scripts/fetch.js';
 import axios from 'axios';
 import nodeCron from 'node-cron';
 import dotenv from 'dotenv';
-import serverless from 'serverless-http';
 dotenv.config();
 
 // ── app ──────────────────────────────────────────────────────────────────────
@@ -62,12 +61,8 @@ app.get('/card/:type/:username/:slug', async (req, res) => {
 });
 
 // ── start ────────────────────────────────────────────────────────────────────
-if (process.env.NODE_ENV === 'local') {
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+app.listen(PORT, async () => {
+  console.log(`Badge API running on port ${PORT}`);
+  const response = await axios.post(LIVE_URL, LIVE_CHECKS);
+  console.log('Initial request sent:', response.status);
 });
-} else {
-const response = await axios.post(LIVE_URL, LIVE_CHECKS);
-console.log('Initial request sent:', response.status);
-}
-export default serverless(app);
