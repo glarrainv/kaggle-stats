@@ -69,5 +69,5 @@ app.listen(PORT, () => {
 } else {
 const response = await axios.post(LIVE_URL, LIVE_CHECKS);
 console.log('Initial request sent:', response.status);
-serverless(app);
 }
+export default serverless(app);
