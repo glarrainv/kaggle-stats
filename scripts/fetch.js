@@ -1,14 +1,15 @@
 import axios from 'axios';
 import fs from 'fs';
 import { createRequire } from 'module';
+import { fileURLToPath } from 'url';
 
 const require = createRequire(import.meta.url);
 const config = require('../config.json');
 
 const { targetids } = config;
 
-// Mai function to write snapshot to history.json
-async function main() {
+// Main function to write snapshot to history.json
+ async function main() {
     const RelevantData = await fetchKaggleProfile();
     console.log("Final relevant data: %o", RelevantData);
 
@@ -35,15 +36,18 @@ async function main() {
 }
 
 // Fetch Kaggle profile data and cookies for API calls
-async function fetchKaggleProfile() {
+export async function fetchKaggleProfile(username = targetids.user, api = false, cardType = null, slug = null) {
 
-    // Store all relevant data in a structured format
+
+const kernels = targetids.kernels;
+const datasets = targetids.datasets;
+// Store all relevant data in a structured format
 const RelevantData = [];
 
   // Cookie use through Kaggle's internal API, built upon @subinium's work:
   // https://github.com/subinium/kaggle-badge
   try {
-    const mainPage = await axios.get(`https://www.kaggle.com/${targetids.user}`, {
+    const mainPage = await axios.get(`https://www.kaggle.com/${username}`, {
       headers: {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       },
@@ -56,7 +60,7 @@ const RelevantData = [];
 
     const apiResponse = await axios.post(
       "https://www.kaggle.com/api/i/routing.RoutingService/GetPageDataByUrl",
-      { relativeUrl: `/${targetids.user}` },
+      { relativeUrl: `/${username}` },
       {
         headers: {
           "Content-Type": "application/json",
@@ -75,34 +79,39 @@ const RelevantData = [];
     const ActivityCounts = {Kernels: Profile?.totalKernels, Datasets: Profile?.totalDatasets, Discussions: Profile?.totalDiscussions};
     const BadgesLength = Profile?.badges?.length || 0;
     const profileData = {Achievements, ActivityCounts, BadgesLength};
-    console.log("Fetched data for user %s: %o", targetids.user, profileData);
+    console.log("Fetched data for user %s: %o", username, profileData);
 
     // Add profile data to final array
     RelevantData.push({profile: profileData});
-    
-    await Promise.all(targetids.notebooks.map(async (notebook) => {
-        RelevantData.push({"notebooks": notebook, ...await fetchItems("notebooks", notebook, cookieStr, xsrfToken)});
-    }));
-    await Promise.all(targetids.datasets.map(async (dataset) => {
-        RelevantData.push({"datasets": dataset, ...await fetchItems("datasets", dataset, cookieStr, xsrfToken)});
-    }));
+
+    if (api) { RelevantData.push({[cardType]: slug, ...await fetchItems(cardType, username, slug, cookieStr, xsrfToken)});}
+    else if (kernels) {
+        await Promise.all(kernels.map(async (kernel) => {
+            RelevantData.push({"kernels": kernel, ...await fetchItems("kernels", username, kernel, cookieStr, xsrfToken)});
+        }));
+    }
+    else if (datasets) {
+        await Promise.all(datasets.map(async (dataset) => {
+            RelevantData.push({"datasets": dataset, ...await fetchItems("datasets", username, dataset, cookieStr, xsrfToken)});
+        }));
+    } else { console.log("No kernels or datasets specified in config for user %s. Only profile data will be fetched.", username); }
     return RelevantData;
-} catch (error) {    console.error('Error fetching data:', error);  }
+} catch (error) {  console.error('Error fetching data:', error);  }
 }
 
-// Fetch details for each notebook and dataset included in target
-async function fetchItems(type, name, cookieStr, xsrfToken) {
+// Fetch details for each kernel and dataset included in target
+async function fetchItems(type, username, filename, cookieStr, xsrfToken) {
     // Define path for api call
     let Endpoint, payload;
     const medalList = ["gold", "silver", "bronze"];
 
     // Endpoint and payloads differ within Kaggle's internal api
     // Kaggle provides no documentation for these endpoints, however they execute on page load within their website.
-    if (type == "notebooks" ) {Endpoint = "https://www.kaggle.com/api/i/kernels.LegacyKernelsService/GetKernelViewModel"; payload = {kernelSlug:name, authorUserName: targetids.user}}
-    else if (type == "datasets") { Endpoint = "https://www.kaggle.com/api/i/datasets.DatasetDetailService/GetDatasetBasics"; payload = {datasetSlug:name, ownerSlug: targetids.user}}    
+    if (type == "kernels" ) {Endpoint = "https://www.kaggle.com/api/i/kernels.LegacyKernelsService/GetKernelViewModel"; payload = {kernelSlug: filename, authorUserName: username}}
+    else if (type == "datasets") { Endpoint = "https://www.kaggle.com/api/i/datasets.DatasetDetailService/GetDatasetBasics"; payload = {datasetSlug: filename, ownerSlug: username}}    
     else { console.error("Unknown type %s", type); return; }
 
-    console.log(`Fetching ${type} %s for user %s. Payload: %o`, name, targetids.user, payload);
+    console.log(`Fetching ${type} %s for user %s. Payload: %o`, filename, username, payload);
 
     try {
     const apiResponse = await axios.post(
@@ -120,13 +129,13 @@ async function fetchItems(type, name, cookieStr, xsrfToken) {
     );
 
     const data = apiResponse.data;
-    // For checking all possible fields
-    console.log(`Raw API response for ${type} %s: %o`, name, data);
+    // For checking all possible fields [UNCOMMENT AS NEEDED]
+    // console.log(`Raw API response for ${type} %s: %o`, filename, data);
 
     // Data structuring - extracting only relevant fields for rendering
-    const relevantData = type === "notebooks" ? {title: data?.kernel?.title, upvotes: data?.kernel?.upvoteCount || 0,views: data?.kernel?.viewCount || 0, forks: data?.kernel?.forkCount || 0, medal: data?.kernel?.medal || "STARTING"} : {title: data?.title, views: data?.viewCount || 0, downloads: data?.downloadCount || 0, discussions: data?.topicCount || 0, upvotes: data?.voteCount || 0, medal: medalList.find(medal => data?.medalUrl?.includes(medal))?.toUpperCase() || "STARTING"};
+    const relevantData = type === "kernels" ? {title: data?.kernel?.title, upvotes: data?.kernel?.upvoteCount || 0,views: data?.kernel?.viewCount || 0, forks: data?.kernel?.forkCount || 0, medal: data?.kernel?.medal || "STARTING"} : {title: data?.title, views: data?.viewCount || 0, downloads: data?.downloadCount || 0, discussions: data?.topicCount || 0, upvotes: data?.voteCount || 0, medal: medalList.find(medal => data?.medalUrl?.includes(medal))?.toUpperCase() || "STARTING"};
 
-    console.log(`Fetched ${name} ${type}  for user %s`, targetids.user, relevantData);
+    console.log(`Fetched ${filename} ${type}  for user %s`, username, relevantData);
     return relevantData;
     
     } catch (error) {
@@ -135,4 +144,6 @@ async function fetchItems(type, name, cookieStr, xsrfToken) {
 }
 
 // Run main function
-main().catch(err => { console.error(err); process.exit(1); });
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch(err => { console.error(err); process.exit(1); });
+}

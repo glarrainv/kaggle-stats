@@ -1,14 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
+import { fileURLToPath } from 'url';
+
 
 const require = createRequire(import.meta.url);
 const config = require('../config.json');
 
 // ── type config ───────────────────────────────────────────────────────────────
-const CARD_TYPES = {
-  notebooks: {
-    filterKey: 'notebooks',         
+export const CARD_TYPES = {
+  kernels: {
+    filterKey: 'kernels',         
     headerText: 'Kernel',
     stats: [
       { field: 'upvotes', label: 'Upvotes' },
@@ -22,7 +24,7 @@ const CARD_TYPES = {
     stats: [
       { field: 'upvotes',     label: 'Upvotes'    },
       { field: 'views',       label: 'Views'      },
-      { field: 'downloads',   label: 'Dwnld'  },
+      { field: 'downloads',   label: 'Downloads'  },
       { field: 'discussions', label: 'Topics'     },
     ],
   },
@@ -76,6 +78,7 @@ for (const [typeName, typeConfig] of Object.entries(CARD_TYPES)) {
   console.log(`Done. ${items.length} ${typeName} card(s) written.`);
 }
 }
+
 // String helper functions for clean formatting
 const fmt = (n) => (n >= 1000 ? (n / 1000).toFixed(1) + 'k' : String(n ?? 0));
 
@@ -94,7 +97,6 @@ function rankStats(item, statDefs) {
   // Works for any length — only index 1 and 2+ get floors
   const MIN_WIDTHS = stats.map((_, i) => {
     if (i === 0) return BAR_WIDTH;
-    console.log((stats.length - (i)) * 30);
     return Math.max((stats.length - (i)) * 30, 30);
   });
 
@@ -143,9 +145,10 @@ function buildLabels(ranked) {
         .join('');
 }
 
-function buildSVG(item, typeConfig) {
+export function buildSVG(item, typeConfig) {
   const { title, medal = 'STARTING' } = item;
 
+  console.log(typeConfig.stats)
   const ranked = rankStats(item, typeConfig.stats);
   const bars   = buildBar(ranked);
   const labels = buildLabels(ranked);
@@ -166,7 +169,7 @@ function buildSVG(item, typeConfig) {
   .e   { font-weight: bold; text-anchor: end; }
   .o   { paint-order: stroke; stroke: #47494D; stroke-width: 2px; }
 </style>
-<rect x="25" y="25" rx="50" width="350" height="175" fill="#F5F5F5" stroke="${MedalColors[medal]}" stroke-width="5"/>
+<rect x="25" y="25" rx="10" width="350" height="175" fill="#F5F5F5" stroke="${MedalColors[medal]}" stroke-width="5"/>
 <text fill="${MedalColors[medal]}" font-size="15" x="200" y="45"  class="t m o">${medal}</text>
 <text fill="#20BEFF" font-size="30" x="200" y="70" class="t m o">${typeConfig.headerText}</text>
 ${bars}
@@ -176,6 +179,7 @@ ${labels}
 </svg>`;
 }
 
-
-// Run main function
-main()
+// Run main when called directly
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main();
+}

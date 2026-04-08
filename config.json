@@ -1,7 +1,7 @@
 {
   "targetids": {
-    "user": "gasparlarrainvaras", 
-    "datasets": ["notre-dame-data-club-2026-historical-data"], 
-    "notebooks": ["basic-python-introduction-proposal-example", "advanced-ml-and-visualizations"]
+    "user": "cdeotte", 
+    "datasets": ["rapids"], 
+    "kernels": ["25-million-images-0-99757-mnist", "1st-place-nvidia-cuml-logistic-regression"]
   }
 }

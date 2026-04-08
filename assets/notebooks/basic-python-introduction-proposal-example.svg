@@ -6,7 +6,7 @@
   .e   { font-weight: bold; text-anchor: end; }
   .o   { paint-order: stroke; stroke: #47494D; stroke-width: 2px; }
 </style>
-<rect x="25" y="25" rx="50" width="350" height="175" fill="#F5F5F5" stroke="#ffffff" stroke-width="5"/>
+<rect x="25" y="25" rx="10" width="350" height="175" fill="#F5F5F5" stroke="#ffffff" stroke-width="5"/>
 <text fill="#ffffff" font-size="15" x="200" y="45"  class="t m o">STARTING</text>
 <text fill="#20BEFF" font-size="30" x="200" y="70" class="t m o">Kernel</text>
 
