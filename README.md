@@ -20,6 +20,8 @@
 
 ## Quickstart
 
+Item configs refer to the variables extracted from each used in a custom class or Type item
+
 ### Hosting options
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fglarrainv%2Fkaggle-stats%2Ftree%2Fmain)
