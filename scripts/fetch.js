@@ -11,7 +11,6 @@ const { targetids } = config;
 // Main function to write snapshot to history.json
  async function main() {
     const RelevantData = await fetchKaggleProfile();
-    console.log("Final relevant data: %o", RelevantData);
 
     const snapshot = {
         timestamp: new Date().toISOString(),
@@ -30,8 +29,6 @@ const { targetids } = config;
     const history = [snapshot];
     fs.writeFileSync(historyPath, JSON.stringify(history, null, 2))
   };
-
-  console.log(`Snapshot saved to history.json at ${snapshot.timestamp}`);
 
 }
 
@@ -135,7 +132,6 @@ async function fetchItems(type, username, filename, cookieStr, xsrfToken) {
     // Data structuring - extracting only relevant fields for rendering
     const relevantData = type === "kernels" ? {title: data?.kernel?.title, upvotes: data?.kernel?.upvoteCount || 0,views: data?.kernel?.viewCount || 0, forks: data?.kernel?.forkCount || 0, medal: data?.kernel?.medal || "STARTING"} : {title: data?.title, views: data?.viewCount || 0, downloads: data?.downloadCount || 0, discussions: data?.topicCount || 0, upvotes: data?.voteCount || 0, medal: medalList.find(medal => data?.medalUrl?.includes(medal))?.toUpperCase() || "STARTING"};
 
-    console.log(`Fetched ${filename} ${type}  for user %s`, username, relevantData);
     return relevantData;
     
     } catch (error) {

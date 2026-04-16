@@ -58,7 +58,7 @@ app.get('/api/:SVGtype/:itemType/:username/:slug', async (req, res) => {
       .send(badge);
   }
   else if (SVGtype == "card") {
-    const card = buildSVG(username,item, itemConfig);
+    const card = buildSVG(item, itemConfig, username);
     return res
       .setHeader('Content-Type', 'image/svg+xml')
       .setHeader('Cache-Control', 'public, max-age=3600')
