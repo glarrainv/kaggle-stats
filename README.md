@@ -59,6 +59,6 @@ Item configs refer to the variables extracted from each used in a custom class o
 ## Notes
 - *For profile badges consider [the following repo](https://github.com/subinium/kaggle-badge). 
 
-Users have reported issues with the api connection in their repo, however I have personally not faced any issues. 
+    - *Users have reported issues with the api connection in their repo, however I have personally not faced any issues.*
 
 - **Competition data is not currently available as I need to familiarize myself with Kaggle competitions first. If there are any metrics publicly visible on Kaggle you consider relevant, consider adding a [suggestion](https://github.com/glarrainv/kaggle-stats/issues/new/choose).
