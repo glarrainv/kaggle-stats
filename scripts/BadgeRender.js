@@ -5,7 +5,7 @@ export function Badge(username, item, itemtype, theme = 'kaggle') {
     const itemName = CARD_CONFIG[itemtype].headerText || 'Unknown';
     const itemSlug = '/' +  CARD_CONFIG[itemtype].slug || '';
     const { medal = 'STARTING' } = item;
-    const themeColor = theme === 'kaggle' ? '#fff' : theme; // default to kaggle blue if theme not provided
+    const themeColor = theme === 'kaggle' ? '#20BEFF' : theme; // default to kaggle blue if theme not provided
     const color = MEDAL_COLORS[medal] || MEDAL_COLORS['STARTING'];
 
     const badgeConfig = {
