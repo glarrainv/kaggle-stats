@@ -43,7 +43,7 @@ Item configs refer to the variables extracted from each used in a custom class o
 | **SVGType:**   | Type of visual used to display stats | 'card', 'badge' |
 | **ItemTType:** | Type of the object retrieved | 'kernels', 'datasets' |
 | **Username:**  | Kaggle username of the item's owner | *Kaggle Username* |
-| **Slug:**      | Slug name of object to retrieve | *item_slug_in_Kaggle*
+| **Slug:**      | Slug name of object to retrieve | *Item Slug In Kaggle* |
 **Theme Argument**| TODO | TODO |
 
 ### Example API
