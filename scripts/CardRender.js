@@ -129,7 +129,7 @@ export function buildSVG(item, itemConfig, username = USERNAME) {
   const display = truncate(title, 45);
 
   console.log(`https://www.kaggle.com/${itemConfig.slug}/${username}/${item[itemConfig.filterKey]}`)
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="250" viewBox="0 0 400 200" fill="none">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="25 25 350 175" preserveAspectRatio="none" fill="none">
 <style>
   text { font-family: Verdana, sans-serif; }
   .t   { font-weight: bold; }
