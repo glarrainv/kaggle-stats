@@ -4,6 +4,7 @@ import { CARD_CONFIG, MEDAL_COLORS } from '../scripts/types.js';
 import { fetchKaggleProfile } from '../scripts/fetch.js';
 
 import express from 'express';
+import { rateLimit } from 'express-rate-limit';
 import axios from 'axios';
 import nodeCron from 'node-cron';
 import dotenv from 'dotenv';
@@ -11,6 +12,7 @@ dotenv.config();
 
 // Constant variables and express config
 const app  = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 const Node_ENV = process.env.NODE_ENV || 'local';
 const LIVE_URL = process.env.LIVE_URL;
@@ -27,6 +29,16 @@ nodeCron.schedule('0 0 * * 0', async () => {
   }
 });
 
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 60,
+  standardHeaders: 'draft-8',
+  legacyHeaders: false,
+  message: { error: 'Too many requests, please slow down and try again in a minute.' },
+});
+
+app.use('/api', apiLimiter);
+
 app.get('/api/:SVGtype/:itemType/:username/:slug', async (req, res) => {
   try {
   const {SVGtype, itemType, username, slug } = req.params;
@@ -37,7 +49,6 @@ app.get('/api/:SVGtype/:itemType/:username/:slug', async (req, res) => {
   
 
   const RelevantData = await fetchKaggleProfile(username, true, itemType, slug); // args: username, api mode, ItemType[apimode], slug[apimode]
-  console.log("RelevantData:", RelevantData);
 
   // User 404 handling
   if (!RelevantData) { return res.status(404).json({ error: `No data found for user "${username}"` });}
@@ -58,7 +69,7 @@ app.get('/api/:SVGtype/:itemType/:username/:slug', async (req, res) => {
       .send(badge);
   }
   else if (SVGtype == "card") {
-    const card = buildSVG(item, itemConfig, username);
+    const card = buildSVG(item, itemConfig, username, itemType);
     return res
       .setHeader('Content-Type', 'image/svg+xml')
       .setHeader('Cache-Control', 'public, max-age=3600')

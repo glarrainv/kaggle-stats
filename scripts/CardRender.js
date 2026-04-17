@@ -128,6 +128,7 @@ export function buildSVG(item, itemConfig, username = USERNAME) {
   const labels = buildLabels(ranked);
   const display = truncate(title, 45);
 
+  console.log(`https://www.kaggle.com/${itemConfig.slug}/${username}/${item[itemConfig.filterKey]}`)
   return `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="250" viewBox="0 0 400 200" fill="none">
 <style>
   text { font-family: Verdana, sans-serif; }
@@ -136,6 +137,7 @@ export function buildSVG(item, itemConfig, username = USERNAME) {
   .e   { font-weight: bold; text-anchor: end; }
   .o   { paint-order: stroke; stroke: #47494D; stroke-width: 2px; }
 </style>
+<a target="_blank" href="https://www.kaggle.com/${itemConfig.slug}/${username}/${item[itemConfig.filterKey]}">
 <rect x="25" y="25" rx="10" width="350" height="175" fill="#F5F5F5" stroke="${MEDAL_COLORS[medal]}" stroke-width="5"/>
 <text fill="${MEDAL_COLORS[medal]}" font-size="15" x="200" y="45"  class="t m o">${medal}</text>
 <text fill="#20BEFF" font-size="30" x="200" y="70" class="t m o">${itemConfig.headerText}</text>
@@ -143,6 +145,7 @@ ${bars}
 ${labels}
 <text x="200" y="170" fill="#000000" class="t m" font-size="11">${display}</text>
 <text x="200" y="190" fill="#000000" class="m"    font-size="16">${username}</text>
+</a>
 </svg>`;
 }
 

@@ -76,7 +76,6 @@ const RelevantData = [];
     const ActivityCounts = {Kernels: Profile?.totalKernels, Datasets: Profile?.totalDatasets, Discussions: Profile?.totalDiscussions};
     const BadgesLength = Profile?.badges?.length || 0;
     const profileData = {Achievements, ActivityCounts, BadgesLength};
-    console.log("Fetched data for user %s: %o", username, profileData);
 
     // Add profile data to final array
     RelevantData.push({profile: profileData});
@@ -107,8 +106,6 @@ async function fetchItems(type, username, filename, cookieStr, xsrfToken) {
     if (type == "kernels" ) {Endpoint = "https://www.kaggle.com/api/i/kernels.LegacyKernelsService/GetKernelViewModel"; payload = {kernelSlug: filename, authorUserName: username}}
     else if (type == "datasets") { Endpoint = "https://www.kaggle.com/api/i/datasets.DatasetDetailService/GetDatasetBasics"; payload = {datasetSlug: filename, ownerSlug: username}}    
     else { console.error("Unknown type %s", type); return; }
-
-    console.log(`Fetching ${type} %s for user %s. Payload: %o`, filename, username, payload);
 
     try {
     const apiResponse = await axios.post(

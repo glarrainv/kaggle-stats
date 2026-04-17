@@ -8,6 +8,7 @@ export const MEDAL_COLORS = {
 export const CARD_CONFIG = {
   kernels: {
     filterKey: 'kernels',
+    slug: 'code',
     headerText: 'Kernel',
     stats: [
       { field: 'upvotes', label: 'Upvotes' },
@@ -17,6 +18,7 @@ export const CARD_CONFIG = {
   },
   datasets: {
     filterKey: 'datasets',
+    slug: 'datasets',
     headerText: 'Dataset',
     stats: [
       { field: 'upvotes', label: 'Upvotes' },
