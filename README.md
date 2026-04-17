@@ -1,5 +1,4 @@
-# Kaggle Sats Connection [Extensive List]
-## Automatic badges, cards and more for everything Kaggle
+# Kaggle Badges and Cards
 *Display stats from your kaggle profile, datasets and notebooks within github. Automatically updated through GitHub Actions.*
 
 ## Menu
@@ -7,7 +6,7 @@
 - **Quickstart**
 
 - **Types of Display**  
-    - Shields
+    - Badges
     - Cards
 
 - **Items to display**  
@@ -15,8 +14,7 @@
     - Kernels
     - Datasets
     - Competitions (TODO)**
-
-*Historical data is collected within history.json, however visualizations over time are not yet integrated*
+    - History Management(TODO)
 
 ## Quickstart
 
@@ -27,34 +25,47 @@ Item configs refer to the variables extracted from each used in a custom class o
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fglarrainv%2Fkaggle-stats%2Ftree%2Fmain)
 
 ```url
-    https://verceldomain.com/api/card/:cardType/:username/:slug
+    https://verceldomain.com/api/:SVGtype/:itemType/:username/:slug
 ```
-
----
 
 ### kaggle.shoore.dev API
 
 ![Kaggle Stats API - SHOORE](https://img.shields.io/endpoint?url=https%3A%2F%2Fhealthchecks.io%2Fb%2F2%2F2dcb10e3-f763-4345-916d-075319d9cf1e.shields)
 
  ```url
-    https://kaggle.shoore.dev.com/api/:type/:item/:username/:slug
+    https://kaggle.shoore.dev.com/api/:SVGtype/:itemType/:username/:slug
 ```
 
-### Query & Parameter options
+### Parameter options
 
-- **Type:** 'card' || 'badge'
-- **Item:** 'kernels' || 'datasets'
-- **Username:** *Kaggle_Username*
-- **Slug:** *item_slug_in_Kaggle*
-- **?Theme:** [default = "kaggle"] || dark || terminal
+| Parameter Name | Description | Possible Values |
+| -------------- | ----------- | --------------- |
+| **SVGType:**   | Type of visual used to display stats | 'card', 'badge' |
+| **ItemTType:** | Type of the object retrieved | 'kernels', 'datasets' |
+| **Username:**  | Kaggle username of the item's owner | *Kaggle Username* |
+| **Slug:**      | Slug name of object to retrieve | *item_slug_in_Kaggle*
+**Theme Argument**| TODO | TODO |
 
-**Kaggle Url:** *https://www.kaggle.com/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data*
-
+### Example API
+**Kaggle Url:** *https://www.kaggle.com/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data*   
 **API URL:** */api/card/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data*
 
+---
+
 ## Kernels
+![ML Visuals](https://kaggle.shoore.dev/api/badge/kernels/gasparlarrainvaras/advanced-ml-and-visualizations)
+![Aquascale](https://kaggle.shoore.dev/api/badge/kernels/mah20050/aquascale-master)
+
+![ML Visuals](https://kaggle.shoore.dev/api/card/kernels/gasparlarrainvaras/advanced-ml-and-visualizations)
+![Aquascale](https://kaggle.shoore.dev/api/card/kernels/mah20050/aquascale-master)
 
 ## Datasets
+![Rapids Dataset Badge](https://kaggle.shoore.dev/api/badge/datasets/cdeotte/rapids)
+![Data Club Historical Dataset Badge](https://kaggle.shoore.dev/api/badge/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data)
+
+![Rapids Dataset Card](https://kaggle.shoore.dev/api/card/datasets/cdeotte/rapids)
+![Data Club Historical Dataset Card](https://kaggle.shoore.dev/api/card/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data)
+
 
 ## Notes
 - *For profile badges consider [the following repo](https://github.com/subinium/kaggle-badge). 
