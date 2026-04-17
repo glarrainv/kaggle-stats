@@ -68,6 +68,8 @@ Item configs refer to the variables extracted from each used in a custom class o
 
 
 ## Notes
+**This project is still under development contributions of any kind are encouraged.**
+
 - *For profile badges consider [the following repo](https://github.com/subinium/kaggle-badge). 
 
     - *Users have reported issues with the api connection in their repo, however I have personally not faced any issues.*
