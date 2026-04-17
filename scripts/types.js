@@ -2,7 +2,7 @@ export const MEDAL_COLORS = {
   GOLD: '#FFD700',
   SILVER: '#C0C0C0',
   BRONZE: '#CD7F32',
-  STARTING: '#ffffff',
+  STARTING: '#20BEFF',
 };
 
 export const CARD_CONFIG = {
