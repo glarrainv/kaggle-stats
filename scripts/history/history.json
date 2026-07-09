@@ -1,9 +1,6 @@
 [
   {
-    "timestamp": "2026-04-08T04:17:50.145Z"
-  },
-  {
-    "timestamp": "2026-04-08T04:18:22.728Z",
+    "timestamp": "2026-07-09T02:59:06.392Z",
     "data": [
       {
         "profile": {
@@ -11,9 +8,9 @@
             {
               "tier": "GRANDMASTER",
               "summaryType": "USER_ACHIEVEMENT_TYPE_COMPETITIONS",
-              "rankPercentage": 0.00015679972,
-              "rankOutOf": 204082,
-              "rankCurrent": 32,
+              "rankPercentage": 0.00019489192,
+              "rankOutOf": 210373,
+              "rankCurrent": 41,
               "rankHighest": 4,
               "totalGoldMedals": 25,
               "totalSilverMedals": 28,
@@ -22,9 +19,9 @@
             {
               "tier": "GRANDMASTER",
               "summaryType": "USER_ACHIEVEMENT_TYPE_DATASETS",
-              "rankPercentage": 0.008340747,
-              "rankOutOf": 8992,
-              "rankCurrent": 75,
+              "rankPercentage": 0.009138506,
+              "rankOutOf": 10505,
+              "rankCurrent": 96,
               "rankHighest": 1,
               "totalGoldMedals": 16,
               "totalSilverMedals": 19,
@@ -33,19 +30,19 @@
             {
               "tier": "GRANDMASTER",
               "summaryType": "USER_ACHIEVEMENT_TYPE_NOTEBOOKS",
-              "rankPercentage": 0.000032828862,
-              "rankOutOf": 60922,
-              "rankCurrent": 2,
+              "rankPercentage": 0.000048118563,
+              "rankOutOf": 62346,
+              "rankCurrent": 3,
               "rankHighest": 1,
-              "totalGoldMedals": 126,
-              "totalSilverMedals": 52,
-              "totalBronzeMedals": 21
+              "totalGoldMedals": 130,
+              "totalSilverMedals": 53,
+              "totalBronzeMedals": 32
             }
           ],
           "ActivityCounts": {
-            "Kernels": 247,
-            "Datasets": 215,
-            "Discussions": 12296
+            "Kernels": 274,
+            "Datasets": 217,
+            "Discussions": 12456
           },
           "BadgesLength": 39
         }
@@ -53,17 +50,83 @@
       {
         "kernels": "25-million-images-0-99757-mnist",
         "title": "25 Million Images! [0.99757] MNIST",
-        "upvotes": 3434,
-        "views": 157665,
-        "forks": 3086,
+        "upvotes": 3454,
+        "views": 159528,
+        "forks": 3103,
         "medal": "GOLD"
       },
       {
         "kernels": "1st-place-nvidia-cuml-logistic-regression",
         "title": "1st Place - Nvidia cuML Logistic Regression",
-        "upvotes": 72,
-        "views": 815,
-        "forks": 28,
+        "upvotes": 85,
+        "views": 1583,
+        "forks": 37,
+        "medal": "SILVER"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-07-09T02:59:27.357Z",
+    "data": [
+      {
+        "profile": {
+          "Achievements": [
+            {
+              "tier": "GRANDMASTER",
+              "summaryType": "USER_ACHIEVEMENT_TYPE_COMPETITIONS",
+              "rankPercentage": 0.00019489192,
+              "rankOutOf": 210373,
+              "rankCurrent": 41,
+              "rankHighest": 4,
+              "totalGoldMedals": 25,
+              "totalSilverMedals": 28,
+              "totalBronzeMedals": 10
+            },
+            {
+              "tier": "GRANDMASTER",
+              "summaryType": "USER_ACHIEVEMENT_TYPE_DATASETS",
+              "rankPercentage": 0.009138506,
+              "rankOutOf": 10505,
+              "rankCurrent": 96,
+              "rankHighest": 1,
+              "totalGoldMedals": 16,
+              "totalSilverMedals": 19,
+              "totalBronzeMedals": 19
+            },
+            {
+              "tier": "GRANDMASTER",
+              "summaryType": "USER_ACHIEVEMENT_TYPE_NOTEBOOKS",
+              "rankPercentage": 0.000048118563,
+              "rankOutOf": 62346,
+              "rankCurrent": 3,
+              "rankHighest": 1,
+              "totalGoldMedals": 130,
+              "totalSilverMedals": 53,
+              "totalBronzeMedals": 32
+            }
+          ],
+          "ActivityCounts": {
+            "Kernels": 274,
+            "Datasets": 217,
+            "Discussions": 12456
+          },
+          "BadgesLength": 39
+        }
+      },
+      {
+        "kernels": "25-million-images-0-99757-mnist",
+        "title": "25 Million Images! [0.99757] MNIST",
+        "upvotes": 3454,
+        "views": 159528,
+        "forks": 3103,
+        "medal": "GOLD"
+      },
+      {
+        "kernels": "1st-place-nvidia-cuml-logistic-regression",
+        "title": "1st Place - Nvidia cuML Logistic Regression",
+        "upvotes": 85,
+        "views": 1583,
+        "forks": 37,
         "medal": "SILVER"
       }
     ]

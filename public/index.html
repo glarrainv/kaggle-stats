@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="API for Kaggle Badges and Cards" />
+    <meta name="author" content="Gaspar Larrain" />
+    <meta name="theme-color" content="#749BC2" />
+
+    <title>Kaggle Stats — Badge Generator</title>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234682A9'/%3E%3Crect x='6' y='14' width='20' height='5' rx='2.5' fill='%23FFFBDE'/%3E%3Crect x='6' y='22' width='12' height='5' rx='2.5' fill='%2391C8E4'/%3E%3Crect x='6' y='6' width='16' height='5' rx='2.5' fill='%23FFFBDE'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/"><span class="brand-mark"></span>Kaggle Stats</a>
+        <nav>
+          <a href="https://github.com/glarrainv/kaggle-stats" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>Badges &amp; cards for your Kaggle work</h1>
+        <p>Generate live SVG badges and stat cards for any public Kaggle kernel or dataset — ready to embed in your GitHub README.</p>
+      </section>
+
+      <section class="card">
+        <h2>Badge generator</h2>
+        <form id="generator" class="generator-form" novalidate>
+          <div class="field">
+            <label for="svg-type">Display type</label>
+            <select id="svg-type" name="svgType">
+              <option value="card">Card — full stats</option>
+              <option value="badge">Badge — compact</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="item-type">Item type</label>
+            <select id="item-type" name="itemType">
+              <option value="kernels">Kernel (notebook)</option>
+              <option value="datasets">Dataset</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="username">Kaggle username</label>
+            <input type="text" id="username" name="username" placeholder="e.g. gasparlarrainvaras" autocomplete="off" spellcheck="false" />
+          </div>
+
+          <div class="field">
+            <label for="slug">Item slug</label>
+            <input type="text" id="slug" name="slug" placeholder="e.g. advanced-ml-and-visualizations" autocomplete="off" spellcheck="false" />
+            <span class="hint">The last part of the item's Kaggle URL</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Generate</button>
+            <p id="form-error" class="form-error hidden">Please fill in every field.</p>
+          </div>
+        </form>
+      </section>
+
+      <section id="preview-card" class="card hidden">
+        <h2>Live preview</h2>
+        <div class="preview-stage">
+          <div id="preview-skeleton" class="skeleton hidden"></div>
+          <img id="preview-img" class="hidden" alt="Badge preview" />
+          <p id="preview-error" class="hidden">Nothing found for that username and slug yet — check the spelling.</p>
+        </div>
+        <p class="preview-note">Previews update as you type. Hit Generate to open the full badge page.</p>
+      </section>
+
+      <section class="card">
+        <h2>Examples</h2>
+
+        <div class="examples-group">
+          <h3 class="examples-subheading">Cards</h3>
+          <div class="examples-grid">
+            <a href="/card/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data">
+              <img src="/api/card/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data" alt="Example dataset card" />
+            </a>
+          </div>
+        </div>
+
+        <div class="examples-group">
+          <h3 class="examples-subheading">Badges</h3>
+          <div class="examples-grid">
+            <a href="/badge/kernels/gasparlarrainvaras/advanced-ml-and-visualizations">
+              <img src="/api/badge/kernels/gasparlarrainvaras/advanced-ml-and-visualizations" alt="Example kernel badge" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>MIT License · Gaspar Larrain</span>
+        <a href="https://github.com/glarrainv/kaggle-stats" target="_blank" rel="noopener">Contribute on GitHub</a>
+      </div>
+    </footer>
+
+    <script src="/js/home.js"></script>
+  </body>
+</html>

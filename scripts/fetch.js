@@ -3,10 +3,16 @@ import fs from 'fs';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 
-const require = createRequire(import.meta.url);
-const config = require('../config.json');
+// config.json is only needed for local CLI runs; API/serverless mode passes all args explicitly.
+// Bundled serverless builds output CommonJS, where import.meta.url is empty — createRequire
+// throws on that, so the whole lookup (not just the require call) must be guarded.
+let config = { targetids: {} };
+try {
+  const require = createRequire(import.meta.url);
+  config = require('../config.json');
+} catch { }
 
-const { targetids } = config;
+const { targetids = {} } = config;
 
 // Main function to write snapshot to history.json
  async function main() {
@@ -136,7 +142,7 @@ async function fetchItems(type, username, filename, cookieStr, xsrfToken) {
     }
 }
 
-// Run main function
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
+// Run main function (import.meta.url is empty in bundled CJS serverless builds — skip there)
+if (import.meta.url && process.argv[1] === fileURLToPath(import.meta.url)) {
   main().catch(err => { console.error(err); process.exit(1); });
 }

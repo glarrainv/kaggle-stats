@@ -23,10 +23,24 @@ Item configs refer to the variables extracted from each used in a custom class o
 ### Hosting options
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fglarrainv%2Fkaggle-stats%2Ftree%2Fmain)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/glarrainv/kaggle-stats)
 
 ```url
-    https://verceldomain.com/api/:SVGtype/:itemType/:username/:slug
+    https://yourdomain.com/api/:SVGtype/:itemType/:username/:slug
 ```
+
+*Note: on serverless hosts the rate limiter's in-memory store is per-instance, so limits reset across cold starts.*
+
+On Netlify, the weekly health-check ping runs as a [Scheduled Function](netlify/functions/health-check.js) (Netlify's own cron, since functions don't stay alive between invocations like `node-cron` needs). Set `LIVE_URL`, `LIVE_CHECK` and `ERROR_CHECK` under Site settings → Environment variables for it to run; without `LIVE_URL` it's skipped.
+
+### Website
+
+The deployed site ships a frontend alongside the API:
+
+- **`/`** — Badge Generator: pick display type, item type, username and slug, with a live preview.
+- **`/:SVGtype/:itemType/:username/:slug`** — badge page with the rendered SVG, stat tiles, a comparison chart and copy-paste embed snippets.
+- **`/:SVGtype/:itemType/:username/:slug/svg`** — the raw exportable SVG.
+- **`/api/data/:itemType/:username/:slug`** — item stats as JSON.
 
 ### kaggle.shoore.dev API
 

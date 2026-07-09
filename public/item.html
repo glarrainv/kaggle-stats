@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Kaggle badge details, stats and embed snippets" />
+    <meta name="author" content="Gaspar Larrain" />
+    <meta name="theme-color" content="#749BC2" />
+
+    <title>Badge — Kaggle Stats</title>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234682A9'/%3E%3Crect x='6' y='14' width='20' height='5' rx='2.5' fill='%23FFFBDE'/%3E%3Crect x='6' y='22' width='12' height='5' rx='2.5' fill='%2391C8E4'/%3E%3Crect x='6' y='6' width='16' height='5' rx='2.5' fill='%23FFFBDE'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/"><span class="brand-mark"></span>Kaggle Stats</a>
+        <nav>
+          <a href="https://github.com/glarrainv/kaggle-stats" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <a class="back-link" href="/">&larr; Badge generator</a>
+
+      <div id="item-content" class="hidden">
+        <div class="item-title-row">
+          <h1 id="item-title">&nbsp;</h1>
+          <span id="item-medal" class="chip hidden"></span>
+        </div>
+        <p class="item-meta">
+          <span id="item-kind"></span> by <span id="item-owner"></span> ·
+          <a id="kaggle-link" href="#" target="_blank" rel="noopener">View on Kaggle</a>
+        </p>
+
+        <section class="card">
+          <h2 id="preview-heading">Preview</h2>
+          <div class="preview-stage">
+            <div id="preview-skeleton" class="skeleton"></div>
+            <img id="preview-img" class="hidden" alt="Badge preview" />
+          </div>
+          <div class="preview-actions">
+            <a id="export-link" class="btn" href="#" target="_blank" rel="noopener">Export SVG</a>
+            <a id="toggle-link" class="btn btn-secondary" href="#"></a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Stats</h2>
+          <div id="stat-row" class="stat-row"></div>
+        </section>
+
+        <section class="card">
+          <h2>Comparison</h2>
+          <div id="viz-rows" class="viz-rows"></div>
+        </section>
+
+        <section class="card">
+          <h2>Embed</h2>
+          <div id="snippet-list" class="snippet-list"></div>
+        </section>
+      </div>
+
+      <div id="error-panel" class="card error-panel hidden">
+        <h2>Nothing here</h2>
+        <p id="error-message">We couldn't find that item.</p>
+        <a class="btn" href="/">Back to the generator</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>MIT License · Gaspar Larrain <br> <i>Front End Developed with Claude Fable</i></span>
+        <a href="https://github.com/glarrainv/kaggle-stats" target="_blank" rel="noopener">Contribute on GitHub</a>
+      </div>
+    </footer>
+
+    <script src="/js/item.js"></script>
+  </body>
+</html>

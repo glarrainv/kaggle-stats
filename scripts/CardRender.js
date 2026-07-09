@@ -3,7 +3,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { CARD_CONFIG, MEDAL_COLORS } from './types.js';
 
-const config = JSON.parse(fs.readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
+// config.json is only needed for local CLI runs; API/serverless mode passes all args explicitly
+let config = { targetids: {} };
+try { config = JSON.parse(fs.readFileSync(new URL('../config.json', import.meta.url), 'utf8')); } catch { }
 
 // Constant Vars
 const BAR_Y = 120;
@@ -26,7 +28,7 @@ const colorOrder = [
 ];
 
 const STROKE = '#47494D';
-const { targetids } = config;
+const { targetids = {} } = config;
 
 const USERNAME = targetids.user;
 
@@ -149,7 +151,7 @@ ${labels}
 </svg>`;
 }
 
-// Run main when called directly
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
+// Run main when called directly (import.meta.url is empty in bundled CJS serverless builds — skip there)
+if (import.meta.url && process.argv[1] === fileURLToPath(import.meta.url)) {
   main();
 }

@@ -1,0 +1,47 @@
+# Netlify config — redirect order is load-bearing: first match wins,
+# so the /svg export rules must precede the page catch-alls.
+
+[build]
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Root config.json (Kaggle target ids) collides with Hugo's config filename,
+# which makes `netlify dev`'s framework auto-detector try to launch Hugo.
+# There's no framework here — public/ is plain static HTML/CSS/JS.
+[dev]
+  framework = "#static"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  included_files = ["config.json"]
+
+# 1) Raw SVG export — must precede the page catch-alls below
+[[redirects]]
+  from = "/card/:itemType/:username/:slug/svg"
+  to = "/.netlify/functions/api/card/:itemType/:username/:slug/svg"
+  status = 200
+
+[[redirects]]
+  from = "/badge/:itemType/:username/:slug/svg"
+  to = "/.netlify/functions/api/badge/:itemType/:username/:slug/svg"
+  status = 200
+
+# 2) Badge pages (rewrite to static shell; client JS reads the path)
+[[redirects]]
+  from = "/card/*"
+  to = "/item.html"
+  status = 200
+
+[[redirects]]
+  from = "/badge/*"
+  to = "/item.html"
+  status = 200
+
+# 3) Public API passthrough (covers /api/data/... and /api/:SVGtype/...)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/api/:splat"
+  status = 200
