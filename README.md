@@ -1,24 +1,10 @@
 # Kaggle Badges and Cards
-*Display stats from your kaggle profile, datasets and notebooks within github. Automatically updated through GitHub Actions.*
+*Display stats from your kaggle profile, datasets and notebooks within github.*   
 
-## Menu
+### Sponsors
 
-- **Quickstart**
-
-- **Types of Display**  
-    - Badges
-    - Cards
-
-- **Items to display**  
-    - Profile (TODO)*
-    - Kernels
-    - Datasets
-    - Competitions (TODO)**
-    - History Management(TODO)
-
+[![SHOORE Badge](https://img.shields.io/badge/shoore-DEV-fffbde?style=plastic&label=SHOORE&labelColor=fffbde&color=749bc2&link=https%3A%2F%2Fshoore.dev%2F)](https://shoore.dev)
 ## Quickstart
-
-Item configs refer to the variables extracted from each used in a custom class or Type item
 
 ### Hosting options
 
@@ -26,30 +12,14 @@ Item configs refer to the variables extracted from each used in a custom class o
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/glarrainv/kaggle-stats)
 
 ```url
-    https://yourdomain.com/api/:SVGtype/:itemType/:username/:slug
+    https://yourdomain.com/:SVGtype/:itemType/:username/:slug
 ```
 
-*Note: on serverless hosts the rate limiter's in-memory store is per-instance, so limits reset across cold starts.*
-
-On Netlify, the weekly health-check ping runs as a [Scheduled Function](netlify/functions/health-check.js) (Netlify's own cron, since functions don't stay alive between invocations like `node-cron` needs). Set `LIVE_URL`, `LIVE_CHECK` and `ERROR_CHECK` under Site settings → Environment variables for it to run; without `LIVE_URL` it's skipped.
-
-### Website
-
-The deployed site ships a frontend alongside the API:
-
-- **`/`** — Badge Generator: pick display type, item type, username and slug, with a live preview.
-- **`/:SVGtype/:itemType/:username/:slug`** — badge page with the rendered SVG, stat tiles, a comparison chart and copy-paste embed snippets.
-- **`/:SVGtype/:itemType/:username/:slug/svg`** — the raw exportable SVG.
-- **`/api/data/:itemType/:username/:slug`** — item stats as JSON.
+###
 
 ### kaggle.shoore.dev API
 
-![Kaggle Stats API - SHOORE](https://img.shields.io/endpoint?url=https%3A%2F%2Fhealthchecks.io%2Fb%2F2%2F2dcb10e3-f763-4345-916d-075319d9cf1e.shields)
-
- ```url
-    https://kaggle.shoore.dev.com/api/:SVGtype/:itemType/:username/:slug
-```
-
+[![Kaggle.Shoore.Dev](https://img.shields.io/endpoint?url=https%3A%2F%2Fhealthchecks.io%2Fb%2F2%2F2dcb10e3-f763-4345-916d-075319d9cf1e.shields)](https://kaggle.shoore.dev/) - [kaggle.shoore.dev](https://kaggle.shoore.dev) 
 ### Parameter options
 
 | Parameter Name | Description | Possible Values |
@@ -58,22 +28,26 @@ The deployed site ships a frontend alongside the API:
 | **ItemTType:** | Type of the object retrieved | 'kernels', 'datasets' |
 | **Username:**  | Kaggle username of the item's owner | *Kaggle Username* |
 | **Slug:**      | Slug name of object to retrieve | *Item Slug In Kaggle* |
-**Theme Argument**| TODO | TODO |
+|**Theme Argument** | TODO | TODO |
 
 ### Example API
-**Kaggle Url:** *https://www.kaggle.com/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data*   
-**API URL:** */api/card/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data*
+
+**Kaggle Url:** *https://www.kaggle.com/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data*
+
+
+**API URL:** *[https://kaggle.shoore.dev/card/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data](https://kaggle.shoore.dev/card/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data)*
 
 ---
+### Example SVGs
 
-## Kernels
+#### Kernels
 ![ML Visuals](https://kaggle.shoore.dev/api/badge/kernels/gasparlarrainvaras/advanced-ml-and-visualizations)
 ![Aquascale](https://kaggle.shoore.dev/api/badge/kernels/mah20050/aquascale-master)
 
 ![ML Visuals](https://kaggle.shoore.dev/api/card/kernels/gasparlarrainvaras/advanced-ml-and-visualizations)
 ![Aquascale](https://kaggle.shoore.dev/api/card/kernels/mah20050/aquascale-master)
 
-## Datasets
+#### Datasets
 ![Rapids Dataset Badge](https://kaggle.shoore.dev/api/badge/datasets/cdeotte/rapids)
 ![Data Club Historical Dataset Badge](https://kaggle.shoore.dev/api/badge/datasets/gasparlarrainvaras/notre-dame-data-club-2026-historical-data)
 

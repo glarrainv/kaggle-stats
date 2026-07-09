@@ -7,9 +7,6 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Root config.json (Kaggle target ids) collides with Hugo's config filename,
-# which makes `netlify dev`'s framework auto-detector try to launch Hugo.
-# There's no framework here — public/ is plain static HTML/CSS/JS.
 [dev]
   framework = "#static"
 
