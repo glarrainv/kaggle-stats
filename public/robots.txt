@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+Disallow: /
+
+Sitemap: https://kaggle.shoore.dev/sitemap.xml

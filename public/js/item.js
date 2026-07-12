@@ -14,6 +14,21 @@ const full = new Intl.NumberFormat('en');
 
 const el = (id) => document.getElementById(id);
 
+function setMeta(selector, value) {
+  const node = document.querySelector(selector);
+  if (node) node.setAttribute('content', value);
+}
+
+function setCanonical(url) {
+  let link = document.querySelector('link[rel="canonical"]');
+  if (!link) {
+    link = document.createElement('link');
+    link.rel = 'canonical';
+    document.head.appendChild(link);
+  }
+  link.href = url;
+}
+
 function showError(message) {
   el('item-content').classList.add('hidden');
   el('error-panel').classList.remove('hidden');
@@ -192,6 +207,16 @@ async function init() {
 
   el('item-title').textContent = title;
   document.title = `${title} — Kaggle Stats`;
+
+  const canonicalUrl = `${location.origin}${location.pathname.replace(/\/+$/, '')}`;
+  const description = `${title} — ${config.kind} by ${username} on Kaggle. Embed this badge in your GitHub README.`;
+  setCanonical(canonicalUrl);
+  setMeta('meta[name="description"]', description);
+  setMeta('meta[property="og:title"]', `${title} — Kaggle Stats`);
+  setMeta('meta[property="og:description"]', description);
+  setMeta('meta[property="og:url"]', canonicalUrl);
+  setMeta('meta[name="twitter:title"]', `${title} — Kaggle Stats`);
+  setMeta('meta[name="twitter:description"]', description);
 
   if (item.medal && item.medal !== 'STARTING') {
     const medal = el('item-medal');

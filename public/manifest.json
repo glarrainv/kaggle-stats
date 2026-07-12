@@ -1,0 +1,16 @@
+{
+  "name": "Kaggle Stats - Github Badges & Cards",
+  "short_name": "Kaggle Stats",
+  "description": "Generate free Kaggle badges and stat cards for GitHub READMEs.",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#749BC2",
+  "background_color": "#FFFBDE",
+  "icons": [
+    {
+      "src": "/img/shoore.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
