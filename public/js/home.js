@@ -1,4 +1,7 @@
 // Badge generator form + debounced live preview.
+import Clarity from '@microsoft/clarity';
+
+const projectId = process.env.CLARITY_ID || ""; 
 
 const form = document.getElementById('generator');
 const formError = document.getElementById('form-error');
@@ -9,6 +12,8 @@ const previewImg = document.getElementById('preview-img');
 const previewError = document.getElementById('preview-error');
 
 const clean = (value) => value.trim().replace(/[\s/]+/g, '');
+
+Clarity.init(projectId);
 
 function readFields() {
   return {
@@ -27,10 +32,12 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   const fields = readFields();
   if (!fields.username || !fields.slug) {
+    Clarity.event("generate-error", { username: fields.username, slug: fields.slug });
     formError.classList.remove('hidden');
     return;
   }
   formError.classList.add('hidden');
+  Clarity.event("generate-success", {   missingUsername: !fields.username, missingSlug: !fields.slug });
   location.href = buildPath(fields);
 });
 
