@@ -9,7 +9,7 @@
     },
     "dependencies": {
         "@microsoft/clarity": "^1.0.2",
-        "axios": "^1.16.0",
+        "axios": "^1.18.0",
         "badge-maker": "^5.0.2",
         "dotenv": "^17.4.1",
         "express": "^5.2.1",
