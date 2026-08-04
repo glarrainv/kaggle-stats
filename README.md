@@ -25,7 +25,7 @@
 | Parameter Name | Description | Possible Values |
 | -------------- | ----------- | --------------- |
 | **SVGType:**   | Type of visual used to display stats | 'card', 'badge' |
-| **ItemTType:** | Type of the object retrieved | 'kernels', 'datasets' |
+| **ItemType:** | Type of the object retrieved | 'kernels', 'datasets' |
 | **Username:**  | Kaggle username of the item's owner | *Kaggle Username* |
 | **Slug:**      | Slug name of object to retrieve | *Item Slug In Kaggle* |
 |**Theme Argument** | TODO | TODO |
